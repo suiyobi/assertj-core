@@ -12,6 +12,8 @@
  */
 package org.assertj.core.error;
 
+import java.util.Map;
+
 public class ShouldBeUnmodifiable extends BasicErrorMessageFactory {
 
   private static final String UNEXPECTED_SUCCESS_PATTERN = "%n" +
@@ -41,5 +43,15 @@ public class ShouldBeUnmodifiable extends BasicErrorMessageFactory {
   private ShouldBeUnmodifiable(String method, RuntimeException cause) {
     super(UNEXPECTED_FAILURE_PATTERN, method, cause.toString());
   }
+//  2381
+  public static ErrorMessageFactory shouldBeUnmodifiable(Map actual) {
+    return new ShouldBeUnmodifiable(actual);
+  }
+  
+  private ShouldBeUnmodifiable(Map actual) {
+//    super("%nExpecting unmodifiable map " + actual);
+    super("%nExpecting unmodifiable map " + actual.keySet() + "->" + actual.values());
+    }
+
 
 }

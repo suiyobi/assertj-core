@@ -235,6 +235,14 @@ public abstract class AbstractMapAssert<SELF extends AbstractMapAssert<SELF, ACT
     return myself;
   }
 
+//  2381
+//  @Override
+  public SELF isUnmodifiable() {
+    maps.assertUnmodifiable(info,actual);
+    return myself;
+  }
+
+
   /**
    * Verifies that the number of values in the {@link Map} is equal to the given one.
    * <p>
