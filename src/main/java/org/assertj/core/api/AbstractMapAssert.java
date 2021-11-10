@@ -235,8 +235,24 @@ public abstract class AbstractMapAssert<SELF extends AbstractMapAssert<SELF, ACT
     return myself;
   }
 
-//  2381
-//  @Override
+// issue 2381
+  /**
+   * Verifies that the {@link Map} is unmodifiable.
+   * <p>
+   * Example:
+   * <pre><code class='java'> Map&lt;String, String&gt; map = new HashMap();
+   * map.put(&quot;key&quot;, &quot;value&quot;);
+   *
+   * // assertion will fail
+   * assertThat(map).isUnmodifiable();
+   *
+   * // assertion will pass
+   * Map&lt;String, String&gt; unmodifiableMap = Collections.unmodifiableMap(map);
+   * assertThat(unmodifiableMap).isUnmodifiable();</code></pre>
+   *
+   * @return {@code this} assertion object.
+   * @throws AssertionError if the {@link Map} is modifiable.
+   */
   public SELF isUnmodifiable() {
     maps.assertUnmodifiable(info,actual);
     return myself;
