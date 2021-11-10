@@ -39,7 +39,6 @@ import static org.assertj.core.error.ShouldNotContainKey.shouldNotContainKey;
 import static org.assertj.core.error.ShouldNotContainKeys.shouldNotContainKeys;
 import static org.assertj.core.error.ShouldNotContainValue.shouldNotContainValue;
 import static org.assertj.core.error.ShouldBeUnmodifiable.shouldBeUnmodifiable;
-import static org.assertj.core.error.ShouldBeUnmodifiableMap.shouldBeUnmodifiableMap;
 import static org.assertj.core.internal.Arrays.assertIsArray;
 import static org.assertj.core.internal.CommonValidations.checkSizeBetween;
 import static org.assertj.core.internal.CommonValidations.checkSizeGreaterThan;
@@ -75,7 +74,6 @@ import org.assertj.core.error.ShouldBe;
 import org.assertj.core.error.ShouldBeBlank;
 import org.assertj.core.error.ShouldBeEmpty;
 import org.assertj.core.error.ShouldBeUnmodifiable;
-import org.assertj.core.error.ShouldBeUnmodifiableMap;
 import org.assertj.core.error.UnsatisfiedRequirement;
 import org.assertj.core.util.VisibleForTesting;
 
@@ -176,11 +174,10 @@ public class Maps {
     if (!actual.isEmpty()) throw failures.failure(info, shouldBeEmpty(actual));
   }
 
-  //2381
+  //issue 2381
   public void assertUnmodifiable(AssertionInfo info, Map<?, ?> actual) {
     assertNotNull(info, actual);
     if (!actual.getClass().getName().contains("UnmodifiableMap")) {
-//      throw failures.failure(info, shouldBeUnmodifiableMap(actual));
       throw failures.failure(info, shouldBeUnmodifiable(actual));
     }
   }
