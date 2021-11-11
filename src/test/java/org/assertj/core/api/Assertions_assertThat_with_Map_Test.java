@@ -15,6 +15,7 @@ package org.assertj.core.api;
 import static java.util.Collections.emptyMap;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,5 +40,26 @@ class Assertions_assertThat_with_Map_Test {
     Map<Object, Object> actual = new HashMap<>();
     AbstractMapAssert<?, ? extends Map<Object, Object>, Object, Object> assertions = Assertions.assertThat(actual);
     assertThat(assertions.actual).isSameAs(actual);
+  }
+
+  // issue 2381 - positive test
+  @Test
+  void should_pass_Unmodifiable(){
+    Map<String, String> map = new HashMap<>();
+    map.put("key", "value");
+    Map<String, String> actual = Collections.unmodifiableMap(map);
+    assertThat(actual).isUnmodifiable();
+  }
+
+  // issue 2381 - negative test
+  @Test
+  void should_fail_modifiable(){
+    Map<String, String> actual = new HashMap<>();
+    actual.put("key", "value");
+    try {
+      assertThat(actual).isUnmodifiable();}
+    catch(AssertionError e){
+      System.out.println(e.getMessage());
+    }
   }
 }
