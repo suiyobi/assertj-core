@@ -16,6 +16,7 @@ import static org.assertj.core.error.ShouldHaveSameSizeAs.shouldHaveSameSizeAs;
 import static org.assertj.core.error.ShouldNotBeNull.shouldNotBeNull;
 import static org.assertj.core.error.SubarraysShouldHaveSameSize.subarraysShouldHaveSameSize;
 import static org.assertj.core.error.array2d.Array2dElementShouldBeDeepEqual.elementShouldBeEqual;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Comparator;
 
@@ -151,6 +152,28 @@ public class Int2DArrayAssert extends Abstract2DArrayAssert<Int2DArrayAssert, in
   @Override
   public Int2DArrayAssert hasSameDimensionsAs(Object array) {
     int2dArrays.assertHasSameDimensionsAs(info, actual, array);
+    return myself;
+  }
+
+  /**
+   * Verifies that the number of rows in a 2D array is the same as the given size. It works for 2D arrays that have different column lengths.
+   *
+   * <p>
+   * Example:
+   * <pre><code class='java'> // assertion will pass
+   * assertThat(new int[][] {{1, 2, 3}, {4, 5}}).hasNumberOfRows(2);
+   *
+   * // assertions will fail
+   * assertThat(new int[][] { }).hasNumberOfRows(1);
+   * assertThat(new int[][] {{1, 2, 3}, {4, 5, 6, 7}}).hasNumberOfRows(3); </code></pre>
+   *
+   * @param expectedRowNum the expected number of rows of the actual array.
+   * @return {@code this} assertion object.
+   * @throws AssertionError if the actual number of rows is not equal to expectedRowNum.
+   */
+  @Override
+  public Int2DArrayAssert hasNumberOfRows(int expectedRowNum) {
+    assertEquals(expectedRowNum, actual.length);
     return myself;
   }
 

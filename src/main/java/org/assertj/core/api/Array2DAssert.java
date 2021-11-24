@@ -128,4 +128,22 @@ public interface Array2DAssert<SELF extends Array2DAssert<SELF, ELEMENT>, ELEMEN
    * @throws AssertionError if actual array and given array don't have the same dimensions.
    */
   SELF hasSameDimensionsAs(Object array);
+
+//  issue 2296
+  /**
+   * Verifies that the number of rows in a 2D array is the same as the given size. It works for 2D arrays that have different column lengths.
+   * <p>
+   * Example:
+   * <pre><code class='java'> // assertion will pass
+   * assertThat(new int[][] {{1, 2, 3}, {4, 5}}).hasNumberOfRows(2);
+   *
+   * // assertions will fail
+   * assertThat(new int[][] { }).hasNumberOfRows(1);
+   * assertThat(new int[][] {{1, 2, 3}, {4, 5, 6, 7}}).hasNumberOfRows(3); </code></pre>
+   *
+   * @param expectedRowNum the expected number of rows of the actual array.
+   * @return {@code this} assertion object.
+   * @throws AssertionError if the actual number of rows is not equal to expectedRowNum.
+   */
+  SELF hasNumberOfRows(int expectedRowNum);
 }
