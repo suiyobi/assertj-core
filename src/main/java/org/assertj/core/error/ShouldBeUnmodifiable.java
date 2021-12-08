@@ -43,12 +43,13 @@ public class ShouldBeUnmodifiable extends BasicErrorMessageFactory {
   private ShouldBeUnmodifiable(String method, RuntimeException cause) {
     super(UNEXPECTED_FAILURE_PATTERN, method, cause.toString());
   }
-// issue 2381
+
+  // CS427 Issue link: https://github.com/assertj/assertj-core/issues/2381
   public static ErrorMessageFactory shouldBeUnmodifiable(Map actual) {
     return new ShouldBeUnmodifiable(actual);
   }
 
-  // issue 2381
+  // CS427 Issue link: https://github.com/assertj/assertj-core/issues/2381
   private ShouldBeUnmodifiable(Map actual) {
     super("%nExpecting Map " + actual.keySet() + "->" + actual.values() + " to be unmodifiable.");
     }

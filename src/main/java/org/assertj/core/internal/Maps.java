@@ -174,7 +174,7 @@ public class Maps {
     if (!actual.isEmpty()) throw failures.failure(info, shouldBeEmpty(actual));
   }
 
-  //issue 2381
+  // CS427 Issue link: https://github.com/assertj/assertj-core/issues/2381
   public void assertUnmodifiable(AssertionInfo info, Map<?, ?> actual) {
     assertNotNull(info, actual);
     if (!actual.getClass().getName().contains("UnmodifiableMap")) {

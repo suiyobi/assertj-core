@@ -235,7 +235,7 @@ public abstract class AbstractMapAssert<SELF extends AbstractMapAssert<SELF, ACT
     return myself;
   }
 
-// issue 2381
+// CS427 Issue link: https://github.com/assertj/assertj-core/issues/2381
   /**
    * Verifies that the {@link Map} is unmodifiable.
    * <p>
