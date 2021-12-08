@@ -129,7 +129,7 @@ public interface Array2DAssert<SELF extends Array2DAssert<SELF, ELEMENT>, ELEMEN
    */
   SELF hasSameDimensionsAs(Object array);
 
-//  issue 2296
+  // CS427 Issue link: https://github.com/assertj/assertj-core/issues/2296
   /**
    * Verifies that the number of rows in a 2D array is the same as the given size. It works for 2D arrays that have different column lengths.
    * <p>

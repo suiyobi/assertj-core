@@ -154,7 +154,7 @@ public class Int2DArrayAssert extends Abstract2DArrayAssert<Int2DArrayAssert, in
     int2dArrays.assertHasSameDimensionsAs(info, actual, array);
     return myself;
   }
-
+  // CS427 Issue link: https://github.com/assertj/assertj-core/issues/2296
   /**
    * Verifies that the number of rows in a 2D array is the same as the given size. It works for 2D arrays that have different column lengths.
    *
