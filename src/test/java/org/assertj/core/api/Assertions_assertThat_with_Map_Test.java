@@ -42,7 +42,7 @@ class Assertions_assertThat_with_Map_Test {
     assertThat(assertions.actual).isSameAs(actual);
   }
 
-  // issue 2381 - positive test
+  // CS427 Issue link: https://github.com/assertj/assertj-core/issues/2381
   @Test
   void should_pass_Unmodifiable(){
     Map<String, String> map = new HashMap<>();
@@ -51,7 +51,7 @@ class Assertions_assertThat_with_Map_Test {
     assertThat(actual).isUnmodifiable();
   }
 
-  // issue 2381 - negative test
+  // CS427 Issue link: https://github.com/assertj/assertj-core/issues/2381
   @Test
   void should_fail_modifiable(){
     Map<String, String> actual = new HashMap<>();
